@@ -1,791 +1,116 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="km">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>សិរីមង្គលអាពាហ៍ពិពាហ៍ - សយ វ៉ាន់ឌី 💞 ឡេង ស៊ាងលីស</title>
-    <meta property="twitter:image" content="https://i.postimg.cc/NjXxFbDQ/bg-frame.jpg"/>
-    <meta property="twitter:card" content="summary_large_image"/>
-
-  <!-- NOTE: For Facebook/Messenger preview, update og:title / og:description / og:image in <head> too. -->
-  <!-- Open Graph Preview (for Messenger / Facebook) -->
-  <meta property="og:title" content="សិរីមង្គលអាពាហ៍ពិពាហ៍ - សយ វ៉ាន់ឌី 💞 ឡេង ស៊ាងលីស"/>
-  <meta property="og:description" content="សូមគោរពអញ្ជើញចូលរួមពិធីអាពាហ៍ពិពាហ៍ របស់គូស្វាមីភរិយាថ្មី (១៧ មករា ២០២៦)"/>
-  <meta property="og:image" content="https://i.postimg.cc/NjXxFbDQ/bg-frame.jpg"/>
-  <meta property="og:type" content="website" />
-
-  <style>
-    :root{
-      --gold:#f5d78e;
-      --gold2:#caa14a;
-      --card: rgba(0,0,0,.55);
-      --border: rgba(245,215,142,.25);
-      --text:#f8fafc;
-      --muted: rgba(248,250,252,.78);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:'Kantumruy Pro', sans-serif;
-      color:var(--text);
-      min-height:100vh;
-      overflow:hidden;
-      background: radial-gradient(circle at 20% 20%, #ffffff 0%, #eaf2ff 35%, #dbeafe 70%, #ffffff 100%);
-    }
-    .wrap{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      min-height:100vh;
-    }
-    /* LEFT */
-    .left{
-      position:relative;
-      overflow:hidden;
-      background: radial-gradient(circle at 20% 20%, #ffffff 0%, #eaf2ff 35%, #dbeafe 70%, #ffffff 100%);
-    }
-    .slideshow{
-      position:absolute; inset:0;
-    }
-    .slide{
-      position:absolute; inset:0;
-      background-size:cover;
-      background-position:center;
-      opacity:0;
-      transition:opacity 1.2s ease;
-      transform:scale(1.02);
-      will-change:opacity, transform;
-      animation:kenburn 14s ease-in-out infinite;
-    }
-    .slide.show{opacity:1;}
-    @keyframes kenburn{
-      0%{transform:scale(1.02) translateX(0)}
-      50%{transform:scale(1.08) translateX(-1.5%)}
-      100%{transform:scale(1.02) translateX(0)}
-    }
-
-    /* RIGHT */
-    .right{
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:22px;
-      background:linear-gradient(90deg, rgba(0,0,0,.25), rgba(0,0,0,.55));
-    }
-    .glass{
-      width:min(520px, 94vw);
-      background:rgba(0,0,0,.55);
-      border:1px solid var(--border);
-      border-radius:22px;
-      padding:26px 22px 20px;
-      backdrop-filter: blur(10px);
-      box-shadow:0 30px 70px rgba(0,0,0,.5);
-      position:relative;
-      overflow:hidden;
-    }
-    .title{
-      text-align:center;
-      font-size:34px;
-      font-weight:900;
-      color:var(--gold);
-      text-shadow:0 0 18px rgba(245,215,142,.38), 0 2px 0 rgba(0,0,0,.55);
-      letter-spacing:.3px;
-      position:relative;
-      padding-bottom:10px;
-      font-family:'Noto Serif Khmer', serif;
-}
-    /* sparkle */
-    .spark{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-    }
-    .spark i{
-      position:absolute;
-      width:6px;height:6px;border-radius:50%;
-      background:rgba(245,215,142,.95);
-      box-shadow:0 0 12px rgba(245,215,142,.95);
-      opacity:.0;
-      animation:twinkle 3.6s linear infinite;
-    }
-    @keyframes twinkle{
-      0%{transform:scale(.4); opacity:0}
-      10%{opacity:1}
-      30%{opacity:.2}
-      50%{transform:scale(1.2); opacity:1}
-      70%{opacity:.2}
-      100%{transform:scale(.4); opacity:0}
-    }
-    .names{
-      text-align:center;
-      font-weight:900;
-      color:var(--gold);
-      font-size:22px;
-      margin-top:6px;
-    }
-    .date{
-      text-align:center;
-      margin-top:6px;
-      font-weight:900;
-      font-size:18px;
-      color:#fff;
-    }
-    .box{
-      margin-top:16px;
-      border:1px solid rgba(245,215,142,.2);
-      border-radius:16px;
-      padding:14px 14px;
-      background:rgba(0,0,0,.35);
-    }
-    .guest-label{
-      color:var(--gold);
-      font-weight:900;
-      margin-bottom:8px;
-      font-size:18px;
-    }
-    .guest-name{
-      font-size:22px;
-      font-weight:900;
-      color:#fff;
-      letter-spacing:.2px;
-    }
-    .big{
-      margin-top:14px;
-      background:rgba(245,215,142,.95);
-      color:#3a2a08;
-      text-align:center;
-      border-radius:999px;
-      padding:14px 16px;
-      font-weight:900;
-      font-size:18px;
-    }
-    .info{
-      margin-top:14px;
-      border-radius:16px;
-      border:1px solid rgba(245,215,142,.18);
-      background:rgba(0,0,0,.35);
-      padding:14px 14px;
-    }
-    .info div{display:flex; gap:10px; margin:8px 0; align-items:flex-start}
-    .info b{min-width:22px; text-align:center}
-    .desc{
-      margin-top:14px;
-      border-radius:16px;
-      border:1px solid rgba(245,215,142,.18);
-      background:rgba(0,0,0,.25);
-      padding:14px 14px;
-      color:var(--muted);
-      line-height:1.65;
-      font-size:14px;
-    }
-    .contact{
-      margin-top:14px;
-      border-radius:16px;
-      border:1px solid rgba(245,215,142,.18);
-      background:rgba(0,0,0,.25);
-      padding:12px 14px;
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      align-items:center;
-      font-weight:900;
-    }
-    .contact span{color:var(--gold)}
-    .btns{
-      margin-top:14px;
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .btn{
-      border:1px solid rgba(245,215,142,.25);
-      background:rgba(0,0,0,.35);
-      color:#fff;
-      padding:12px 16px;
-      border-radius:999px;
-      font-weight:900;
-      cursor:pointer;
-      text-decoration:none;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      transition:.12s;
-    }
-    .btn:hover{transform:translateY(-1px); background:rgba(0,0,0,.45)}
-    @media (max-width: 960px){
-      body{overflow:auto}
-      .wrap{grid-template-columns:1fr}
-      .left{min-height:52vh}
-      .right{background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.65))}
-    }
-  
-.bg-slideshow .slide.active{opacity:1;transform:scale(1.0);} 
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Noto+Serif+Khmer:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ប្រព័ន្ធគ្រប់គ្រងសប្បុរសជន - វត្តស្វាយមីង</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Moul&display=swap');
+        * { box-sizing: border-box; }
+        body { font-family: 'Kantumruy Pro', sans-serif; background-color: #f0f2f5; margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center; }
+        .input-form { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); width: 100%; max-width: 1250px; margin-bottom: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; align-items: flex-end; border-top: 5px solid #4a76ad; }
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-size: 13px; margin-bottom: 6px; font-weight: bold; color: #333; }
+        .input-group input, .input-group select { padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Kantumruy Pro'; outline: none; width: 100%; }
+        .btn-add { background: #28a745; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; height: 42px; }
+        .container { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 0 20px rgba(0,0,0,0.05); width: 100%; max-width: 1250px; }
+        h2 { font-family: 'Moul', serif; text-align: center; color: #1a3a5f; margin-bottom: 25px; font-size: 20px; }
+        .table-responsive { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 850px; table-layout: fixed; border: 1px solid #000; }
+        th, td { border: 1px solid #000; padding: 10px; font-size: 14px; word-wrap: break-word; vertical-align: middle; }
+        th { background: #f8f9fa; font-family: 'Moul', serif; font-weight: normal; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .no-print { margin-bottom: 15px; display: flex; gap: 10px; justify-content: flex-end; width: 100%; max-width: 1250px; flex-wrap: wrap; }
+        .btn-action { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; color: white; font-weight: bold; font-family: 'Kantumruy Pro'; flex: 1; min-width: 120px; }
+        @media print { .no-print, .input-form, td:last-child, th:last-child { display: none !important; } body { padding: 0; background: white; } .container { box-shadow: none; width: 100%; } }
+    </style>
 </head>
 <body>
-
-  <!-- ===========================
-       🔐 Admin Panel UI (Ctrl+Alt+A to toggle)
-       =========================== -->
-  <button id="adminToggleBtn" aria-label="Open admin panel"
-    style="position:fixed;bottom:18px;right:18px;z-index:9999;border:none;border-radius:999px;padding:12px 14px;box-shadow:0 10px 25px rgba(0,0,0,.18);background:#111;color:#fff;font-weight:700;cursor:pointer;">
-    ⚙️ Admin
-  </button>
-
-  <div id="adminPanel" style="position:fixed;inset:0;z-index:9998;display:none;">
-    <div id="adminBackdrop" style="position:absolute;inset:0;background:rgba(0,0,0,.55);"></div>
-    <div style="position:absolute;right:0;top:0;height:100%;width:min(520px,92vw);background:#fff;box-shadow:-10px 0 30px rgba(0,0,0,.25);padding:18px 18px 90px;overflow:auto;">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <div>
-          <div style="font-size:18px;font-weight:800;">Admin Panel</div>
-          <div style="font-size:12px;opacity:.7;">កែព័ត៌មានទាំងអស់ → ចុច Apply/Save</div>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center;"><button id="adminLogoutBtn" style="border:none;background:#fff;border:1px solid #ddd;border-radius:12px;padding:10px 12px;cursor:pointer;font-weight:800;">🚪 Logout</button><button id="adminCloseBtn" style="border:none;background:#f2f2f2;border-radius:12px;padding:10px 12px;cursor:pointer;font-weight:700;">✕ Close</button></div>
-      </div>
-
-      <hr style="margin:14px 0;border:none;border-top:1px solid #eee;"/>
-
-      <div style="display:grid;gap:12px;">
-        <label style="display:grid;gap:6px;font-weight:700;">Title
-          <input id="f_title" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-        </label>
-
-        <label style="display:grid;gap:6px;font-weight:700;">Couple
-          <input id="f_couple" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-        </label>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <label style="display:grid;gap:6px;font-weight:700;">Date (Short)
-            <input id="f_dateShort" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-          </label>
-          <label style="display:grid;gap:6px;font-weight:700;">Time
-            <input id="f_time" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-          </label>
-        </div>
-
-        <label style="display:grid;gap:6px;font-weight:700;">Date (Full)
-          <input id="f_dateFull" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-        </label>
-
-        <label style="display:grid;gap:6px;font-weight:700;">Guest Label
-          <input id="f_guestLabel" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-        </label>
-
-        <label style="display:grid;gap:6px;font-weight:700;">Big Text
-          <input id="f_bigText" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-        </label>
-
-        <label style="display:grid;gap:6px;font-weight:700;">Location
-          <input id="f_location" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-        </label>
-
-        <label style="display:grid;gap:6px;font-weight:700;">Description (Long)
-          <textarea id="f_desc" rows="4" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;resize:vertical;"></textarea>
-        </label>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <label style="display:grid;gap:6px;font-weight:700;">Phone (Display)
-            <input id="f_phoneDisplay" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-          </label>
-          <label style="display:grid;gap:6px;font-weight:700;">Phone (tel:)
-            <input id="f_phoneTel" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-          </label>
-        </div>
-
-        <label style="display:grid;gap:6px;font-weight:700;">Map Link
-          <input id="f_mapLink" type="text" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-        </label>
-
-        <div style="display:grid;gap:8px;">
-          <div style="font-weight:800;">Slides (4 links)</div>
-          <input id="f_slide1" type="text" placeholder="Slide 1 link" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-          <input id="f_slide2" type="text" placeholder="Slide 2 link" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-          <input id="f_slide3" type="text" placeholder="Slide 3 link" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-          <input id="f_slide4" type="text" placeholder="Slide 4 link" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-        </div>
-
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
-          <button id="adminApplyBtn" style="border:none;border-radius:14px;padding:12px 14px;background:#111;color:#fff;font-weight:800;cursor:pointer;">✅ Apply</button>
-          <button id="adminSaveBtn" style="border:none;border-radius:14px;padding:12px 14px;background:#2563eb;color:#fff;font-weight:800;cursor:pointer;">💾 Save</button>
-          <button id="adminResetBtn" style="border:1px solid #ddd;border-radius:14px;padding:12px 14px;background:#fff;color:#111;font-weight:800;cursor:pointer;">↩ Reset Saved</button>
-          <button id="adminChangePassBtn" style="border:1px solid #ddd;border-radius:14px;padding:12px 14px;background:#fff;color:#111;font-weight:800;cursor:pointer;">🔑 Change Password</button>
-          <div style="flex-basis:100%;height:0;"></div>
-          <label style="display:grid;gap:6px;font-weight:800;flex:1;min-width:220px;">Guest Name (សម្រាប់ Copy Link)
-            <input id="f_guestCopy" type="text" placeholder="ឧ: លោក សុខា" style="padding:10px 12px;border:1px solid #ddd;border-radius:12px;width:100%;"/>
-          </label>
-          <button id="adminCopyLinkBtn" style="border:1px solid #ddd;border-radius:14px;padding:12px 14px;background:#fff;color:#111;font-weight:800;cursor:pointer;">🔗 Copy Link</button>
-          <button id="adminDownloadBtn" style="border:1px solid #ddd;border-radius:14px;padding:12px 14px;background:#fff;color:#111;font-weight:800;cursor:pointer;">⬇️ Download</button>
-          <button id="adminDownloadImagesBtn" style="border:1px solid #ddd;border-radius:14px;padding:12px 14px;background:#fff;color:#111;font-weight:800;cursor:pointer;">🖼️ Download Images</button>
-        </div>
-
-        <div style="font-size:12px;opacity:.75;line-height:1.45;margin-top:6px;">
-          Tip: ចុច <b>Ctrl + Alt + A</b> ដើម្បីបើក/បិទ panel បានលឿន។<br/>
-          Note: Facebook preview (og:image) នៅក្នុង &lt;head&gt; ត្រូវកែដោយដៃ។
-        </div>
-      </div>
+    <div class="input-form no-print">
+        <div class="input-group"><label>បរិច្ឆេទ</label><input type="date" id="dateInput"></div>
+        <div class="input-group" style="grid-column: span 2;"><label>ឈ្មោះ</label><input type="text" id="nameInput" placeholder="ឈ្មោះ..."></div>
+        <div class="input-group"><label>សម្ភារៈ</label><input type="text" id="itemInput" placeholder="សម្ភារៈ..."></div>
+        <div class="input-group"><label>Tel</label><input type="text" id="phoneInput" placeholder="Tel..."></div>
+        <div class="input-group"><label>តម្លៃ</label><input type="number" id="priceInput" placeholder="0"></div>
+        <div class="input-group"><label>រូបិយប័ណ្ណ</label><select id="currencyInput"><option value="USD">$ (USD)</option><option value="KHR">៛ (KHR)</option></select></div>
+        <button class="btn-add" onclick="addNewData()">+ បន្ថែម</button>
     </div>
-  </div>
-
-
-  <script>
-    /* ===========================
-       ✅ EDITABLE SETTINGS (កែត្រង់នេះតែមួយកន្លែង)
-       =========================== */
-    const ADMIN_PASSWORD = "Reaksaads050796";
-    const ADMIN_SETTINGS = {
-      hideAdminButton: true, // true = hide ⚙️ Admin button (use Ctrl+Alt+A)
-      autoLockMinutes: 15     // auto-lock after X minutes of inactivity
-    };
-    const WEDDING = {
-      title: "សិរីមង្គលអាពាហ៍ពិពាហ៍",
-      couple: "សយ វ៉ាន់ឌី 💞 ឡេង ស៊ាងលីស",
-      dateShort: "១៧ មករា ២០២៦",
-      guestLabel: "សូមគោរពអញ្ជើញភ្ញៀវកិត្តិយស",
-      bigText: "សូមអញ្ជើញចូលរួមពិធីអាពាហ៍ពិពាហ៍",
-      dateFull: "ថ្ងៃសៅរ៍ ទី១៧ ខែមករា ឆ្នាំ២០២៦",
-      time: "វេលាម៉ោង ៥៖០០ ល្ងាច",
-      location: "ភូមិចន្លោង ឃុំដំរិល ស្រុកអូររាំងឪ ខេត្តត្បូងឃ្មុំ",
-      desc: "យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញ ឯកឧត្តម លោកឧកញ៉ា អ្នកឧកញ៉ា ឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាង កញ្ញា អញ្ជើញចូលរួម ដើម្បីប្រសិទ្ធិពរជ័យសិរីសួស្តី ជ័យមង្គល ក្នុងពិធីអាពាហ៍ពិពាហ៍ របស់គូស្វាមីភរិយាថ្មី។",
-      callLabel: "📞 ហៅឥឡូវ",
-      phoneDisplay: "+855 90 598 510",
-      phoneTel: "+85590598510",
-      mapLabel: "📍 ទីតាំង (Map)",
-      mapLink: "https://goo.gl/maps/KcnLyL4jv2HMGDss9",
-      // Preview image used in body (Facebook preview is in <head>, please update there too)
-      slides: [
-        "https://i.postimg.cc/NjXxFbDQ/bg-frame.jpg",
-        "https://i.postimg.cc/NjXxFbDQ/bg-frame.jpg",
-        "https://i.postimg.cc/NjXxFbDQ/bg-frame.jpg",
-        "https://i.postimg.cc/NjXxFbDQ/bg-frame.jpg"
-      ]
-    };
-    // Load saved values from localStorage (if any)
-    function loadWeddingFromStorage(){
-      try{
-        const raw = localStorage.getItem("WEDDING_SETTINGS_V1");
-        if(!raw) return;
-        const saved = JSON.parse(raw);
-        if(saved && typeof saved === "object"){
-          Object.assign(WEDDING, saved);
-        }
-      }catch(e){}
-    }
-
-    function saveWeddingToStorage(){
-      try{
-        localStorage.setItem("WEDDING_SETTINGS_V1", JSON.stringify(WEDDING));
-      }catch(e){}
-    }
-
-
-    // Apply settings to page
-    
-        
-    function getAdminPassword(){
-      return localStorage.getItem("ADMIN_PASSWORD_OVERRIDE") || ADMIN_PASSWORD;
-    }
-    function setAdminPassword(newPass){
-      localStorage.setItem("ADMIN_PASSWORD_OVERRIDE", newPass);
-    }
-    function touchAdminActivity(){
-      localStorage.setItem("ADMIN_LAST_ACTIVE", String(Date.now()));
-    }
-    function isAutoLocked(){
-      const mins = Number(ADMIN_SETTINGS.autoLockMinutes || 0);
-      if(!mins) return false;
-      const last = Number(localStorage.getItem("ADMIN_LAST_ACTIVE") || "0");
-      if(!last) return false;
-      return (Date.now() - last) > mins * 60 * 1000;
-    }
-
-function isAdminAuthed(){ return localStorage.getItem("ADMIN_AUTH")==="1" && !isAutoLocked(); }
-
-
-    function applyAdminUiSettings(){
-      const btn = document.getElementById("adminToggleBtn");
-      if(btn && ADMIN_SETTINGS.hideAdminButton){
-        btn.style.display = "none";
-      }
-    }
-
-function initAdminPanel(){
-      const panel = document.getElementById("adminPanel");
-      const openBtn = document.getElementById("adminToggleBtn");
-      const closeBtn = document.getElementById("adminCloseBtn");
-      const backdrop = document.getElementById("adminBackdrop");
-      const logoutBtn = document.getElementById("adminLogoutBtn");
-
-      const open = () => {
-        if(!isAdminAuthed()){
-          const p = prompt("Enter admin password:");
-          if(p !== getAdminPassword()){ alert("Wrong password ❌"); return; }
-          localStorage.setItem("ADMIN_AUTH", "1");
-          touchAdminActivity();
-        }
-        panel.style.display = "block"; fillFormFromWedding(); touchAdminActivity();
-      };
-      const close = () => { panel.style.display = "none"; };
-
-      // expose helpers for mobile / long-press
-      window.openAdminPanel = open;
-      window.closeAdminPanel = close;
-
-      openBtn && openBtn.addEventListener("click", open);
-      closeBtn && closeBtn.addEventListener("click", close);
-      backdrop && backdrop.addEventListener("click", close);
-      panel.addEventListener("input", touchAdminActivity);
-      panel.addEventListener("click", touchAdminActivity);
-
-      logoutBtn && logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem("ADMIN_AUTH");
-        alert("Logged out ✅");
-        close();
-      });
-
-      
-      setupLongPressAdmin(open);
-      setupTap5Admin(open);
-
-      
-      function setupTap5Admin(openFn){
-        const el = document.querySelector(".left") || document.querySelector(".ring");
-        if(!el) return;
-        let count = 0;
-        let last = 0;
-        const WINDOW_MS = 1500; // 5 taps within 1.5s
-        el.addEventListener("click", (e) => {
-          const t = e.target;
-          if(t && (t.closest("a") || t.closest("button") || t.closest("input") || t.closest("textarea"))) return;
-          const now = Date.now();
-          if(now - last > WINDOW_MS) count = 0;
-          last = now;
-          count += 1;
-          if(count >= 5){
-            count = 0;
-            openFn();
-          }
-        });
-        el.addEventListener("touchend", (e) => {
-          // touchend will also fire click sometimes; allow click handler to manage
-        }, {passive:true});
-      }
-
-function setupLongPressAdmin(openFn){
-        const targets = [
-          document.querySelector(".ring"),
-          document.querySelector(".left")
-        ].filter(Boolean);
-        if(!targets.length) return;
-
-        const HOLD_MS = 700; // hold 0.7s
-        targets.forEach(el => {
-          let timer = null;
-          const start = (e) => {
-            const t = e.target;
-            // avoid triggering on links/buttons/inputs/text selection
-            if(t && (t.closest("a") || t.closest("button") || t.closest("input") || t.closest("textarea"))) return;
-            timer = setTimeout(() => { openFn(); }, HOLD_MS);
-          };
-          const cancel = () => { if(timer){ clearTimeout(timer); timer=null; } };
-          el.addEventListener("touchstart", start, {passive:true});
-          el.addEventListener("touchend", cancel);
-          el.addEventListener("touchcancel", cancel);
-
-          // optional desktop mouse hold
-          el.addEventListener("mousedown", start);
-          el.addEventListener("mouseup", cancel);
-          el.addEventListener("mouseleave", cancel);
-        });
-      }
-
-document.addEventListener("keydown", (e) => {
-        if(e.ctrlKey && e.altKey && (e.key === "a" || e.key === "A")){
-          e.preventDefault();
-          panel.style.display = (panel.style.display === "block") ? "none" : "block";
-          if(panel.style.display === "block") fillFormFromWedding();
-        }
-      });
-
-      document.getElementById("adminApplyBtn")?.addEventListener("click", () => {
-        readFormToWedding();
-        applyWeddingSettings();
-        touchAdminActivity();
-      });
-
-      document.getElementById("adminSaveBtn")?.addEventListener("click", () => {
-        readFormToWedding();
-        saveWeddingToStorage();
-        applyWeddingSettings();
-        touchAdminActivity();
-        alert("Saved ✅");
-      });
-
-      document.getElementById("adminChangePassBtn")?.addEventListener("click", () => {
-        const oldP = prompt("Old password:");
-        if(oldP !== getAdminPassword()){ alert("Old password incorrect ❌"); return; }
-        const newP = prompt("New password (min 6 chars):");
-        if(!newP || newP.length < 6){ alert("Password too short ❌"); return; }
-        const confirmP = prompt("Confirm new password:");
-        if(confirmP !== newP){ alert("Password not match ❌"); return; }
-        setAdminPassword(newP);
-        touchAdminActivity();
-        alert("Change Password ✅");
-      });
-
-      
-      
-      document.getElementById("adminCopyLinkBtn")?.addEventListener("click", async () => {
-        const base = window.location.origin + window.location.pathname;
-        const guest = (document.getElementById("f_guestCopy")?.value || "").trim();
-        const url = guest ? `${base}?guest=${encodeURIComponent(guest)}` : base;
-        try{
-          await navigator.clipboard.writeText(url);
-          alert("Copied ✅\n" + url);
-        }catch(e){
-          prompt("Copy this link:", url);
-        }
-        touchAdminActivity();
-      });
-
-      document.getElementById("adminDownloadBtn")?.addEventListener("click", () => {
-        readFormToWedding();
-        saveWeddingToStorage();
-        applyWeddingSettings();
-        downloadSettingsFile();
-        touchAdminActivity();
-      });
-
-      function downloadSettingsFile(){
-        const data = {
-          WEDDING,
-          exportedAt: new Date().toISOString()
-        };
-        const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "wedding-settings.json";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-      }
-
-      
-      document.getElementById("adminDownloadImagesBtn")?.addEventListener("click", async () => {
-        readFormToWedding();
-        saveWeddingToStorage();
-        applyWeddingSettings();
-        await downloadAllImages();
-        touchAdminActivity();
-      });
-
-      async function downloadAllImages(){
-        // 1) Preview image from <meta property="og:image">
-        const og = document.querySelector('meta[property="og:image"]')?.getAttribute("content");
-        // 2) Slides from settings
-        const urls = [];
-        if(og) urls.push({url: og, name: "preview.jpg"});
-        (WEDDING.slides || []).forEach((u, i) => { if(u) urls.push({url: u, name: `slide-${i+1}.jpg`}); });
-
-        if(!urls.length){
-          alert("No image links found ❌");
-          return;
-        }
-
-        // Try to download sequentially; if blocked, open in new tab as fallback.
-        for(const item of urls){
-          await downloadImageWithFallback(item.url, item.name);
-          await new Promise(r => setTimeout(r, 350));
-        }
-        alert("Done ✅\nIf some files didn't download, they were opened in a new tab (browser security).");
-      }
-
-      function downloadImageWithFallback(url, filename){
-        return new Promise((resolve) => {
-          try{
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = filename;
-            a.target = "_blank";
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            // some browsers ignore download attr cross-origin; still opens
-            resolve();
-          }catch(e){
-            window.open(url, "_blank");
-            resolve();
-          }
-        });
-      }
-
-      document.getElementById("adminResetBtn")?.addEventListener("click", () => {
-        localStorage.removeItem("WEDDING_SETTINGS_V1");
-        alert("Reset saved data ✅\nRefresh page to load defaults.");
-      });
-    }
-
-    function fillFormFromWedding(){
-      const g = (id) => document.getElementById(id);
-      g("f_title").value = WEDDING.title || "";
-      g("f_couple").value = WEDDING.couple || "";
-      g("f_dateShort").value = WEDDING.dateShort || "";
-      g("f_guestLabel").value = WEDDING.guestLabel || "";
-      g("f_bigText").value = WEDDING.bigText || "";
-      g("f_dateFull").value = WEDDING.dateFull || "";
-      g("f_time").value = WEDDING.time || "";
-      g("f_location").value = WEDDING.location || "";
-      g("f_desc").value = WEDDING.desc || "";
-      g("f_phoneDisplay").value = WEDDING.phoneDisplay || "";
-      g("f_phoneTel").value = WEDDING.phoneTel || "";
-      g("f_mapLink").value = WEDDING.mapLink || "";
-      g("f_slide1").value = (WEDDING.slides && WEDDING.slides[0]) || "";
-      g("f_slide2").value = (WEDDING.slides && WEDDING.slides[1]) || "";
-      g("f_slide3").value = (WEDDING.slides && WEDDING.slides[2]) || "";
-      g("f_slide4").value = (WEDDING.slides && WEDDING.slides[3]) || "";
-    }
-
-    function readFormToWedding(){
-      const v = (id) => (document.getElementById(id)?.value || "").trim();
-      WEDDING.title = v("f_title") || WEDDING.title;
-      WEDDING.couple = v("f_couple") || WEDDING.couple;
-      WEDDING.dateShort = v("f_dateShort") || WEDDING.dateShort;
-      WEDDING.guestLabel = v("f_guestLabel") || WEDDING.guestLabel;
-      WEDDING.bigText = v("f_bigText") || WEDDING.bigText;
-      WEDDING.dateFull = v("f_dateFull") || WEDDING.dateFull;
-      WEDDING.time = v("f_time") || WEDDING.time;
-      WEDDING.location = v("f_location") || WEDDING.location;
-      WEDDING.desc = document.getElementById("f_desc")?.value || WEDDING.desc;
-      WEDDING.phoneDisplay = v("f_phoneDisplay") || WEDDING.phoneDisplay;
-      WEDDING.phoneTel = v("f_phoneTel") || WEDDING.phoneTel;
-      WEDDING.mapLink = v("f_mapLink") || WEDDING.mapLink;
-      WEDDING.slides = [v("f_slide1"), v("f_slide2"), v("f_slide3"), v("f_slide4")].filter(Boolean);
-    }
-
-function applyWeddingSettings(){
-      const setText = (id, val) => { const el = document.getElementById(id); if(el && val!=null) el.textContent = val; };
-      setText("w_title", WEDDING.title);
-      setText("w_couple", WEDDING.couple);
-      setText("w_date_short", WEDDING.dateShort);
-      setText("w_guest_label", WEDDING.guestLabel);
-      setText("w_big", WEDDING.bigText);
-      setText("w_date_full", WEDDING.dateFull);
-      setText("w_time", WEDDING.time);
-      setText("w_location", WEDDING.location);
-      setText("w_desc", WEDDING.desc);
-      setText("w_call_label", WEDDING.callLabel);
-      setText("w_phone_display", WEDDING.phoneDisplay);
-
-      const mapBtn = document.getElementById("w_map_btn");
-      if(mapBtn){
-        mapBtn.href = WEDDING.mapLink;
-        mapBtn.textContent = WEDDING.mapLabel;
-      }
-      const callBtn = document.getElementById("w_call_btn");
-      if(callBtn){
-        callBtn.href = "tel:" + WEDDING.phoneTel;
-        callBtn.textContent = WEDDING.callLabel;
-      }
-
-      // Update slideshow backgrounds
-      const slides = Array.from(document.querySelectorAll(".slide"));
-      slides.forEach((s, idx) => {
-        if(WEDDING.slides[idx]) s.style.backgroundImage = `url('${WEDDING.slides[idx]}')`;
-      });
-
-      // Update browser title (not Facebook preview)
-      document.title = `${WEDDING.title} - ${WEDDING.couple}`;
-    }
-
-    document.addEventListener("DOMContentLoaded", () => { loadWeddingFromStorage(); applyWeddingSettings(); applyAdminUiSettings(); initAdminPanel(); });
-  </script>
-
-  <div class="wrap">
-    <section class="left">
-      <div class="slideshow" id="slideshow">
-        <div class="slide show" data-slide="0" style="background-image:url(\'https://lh3.googleusercontent.com/d/1Lpi-tYGWk6hDbUNP3aMj1glzxfXoephU\');"></div>
-        <div class="slide" data-slide="1" style="background-image:url('https://lh3.googleusercontent.com/d/1ERIlp0vAXIRnovSqZpn3EuLVxeMHZi28');"></div>
-        <div class="slide" data-slide="2" style="background-image:url('https://lh3.googleusercontent.com/d/1QviHOrtpGkqMo0kT_lkOjl_wzl7pVphA');"></div>
-        <div class="slide" data-slide="3" style="background-image:url('https://lh3.googleusercontent.com/d/1sU696GN2etoBaHsJXBuGBN1ry8L9VNyQ');"></div>
-      </div>
-    </section>
-
-    <section class="right">
-      <div class="glass">
-        <div class="title" id="w_title">
-          សិរីមង្គលអាពាហ៍ពិពាហ៍
-          <div class="spark" id="spark"></div>
+    <div class="no-print">
+        <button class="btn-action" style="background:#4a76ad;" onclick="window.print()">បោះពុម្ព PDF</button>
+        <button class="btn-action" style="background:#1d6f42;" onclick="exportToExcel()">ទាញយក Excel</button>
+    </div>
+    <div class="container">
+        <h2 id="mainTitle">នាមសប្បុរសជនចូលកសាងសាលាឆាន់វត្តស្វាយមីង</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr><th style="width: 110px;">បរិច្ឆេទ</th><th>ឈ្មោះ</th><th>សម្ភារៈ</th><th style="width: 120px;">Tel</th><th style="width: 130px;">តម្លៃ</th><th class="no-print" style="width: 60px;">លុប</th></tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+                <tfoot>
+                    <tr style="font-weight:bold;"><td colspan="4" class="text-right" style="font-family: 'Moul', serif;">សរុបដុល្លារ ($) ៖</td><td id="totalUSD" class="text-center" style="color:#28a745;">0 $</td><td class="no-print"></td></tr>
+                    <tr style="font-weight:bold;"><td colspan="4" class="text-right" style="font-family: 'Moul', serif;">សរុបរៀល (៛) ៖</td><td id="totalKHR" class="text-center" style="color:#d32f2f;">0 ៛</td><td class="no-print"></td></tr>
+                </tfoot>
+            </table>
         </div>
-        <div class="names" id="w_couple">សយ វ៉ាន់ឌី 💞 ឡេង ស៊ាងលីស</div>
-        <div class="date" id="w_date_short">១៧ មករា ២០២៦</div>
+    </div>
+    <script>
+        const initialData = [
+            { date: "2024-10-17", name: "ឧបាសក គួយស្រ៊ី ឧបាសិកា ហ័រ", item: "សសរកន្លោង១ដើម", phone: "", price: 2000, currency: "USD" },
+            { date: "2024-11-13", name: "ឧបាសិកា តាន់ សំអ៊ូ ឧបាសិកា តាន់ សុផល", item: "សសរកន្លោង១ដើម", phone: "", price: 2000, currency: "USD" },
+            { date: "2024-11-24", name: "លោក ជា រស្មី អ្នកស្រី ថន វណ្ណៈ", item: "សសរកន្លោង១ដើម", phone: "", price: 2000, currency: "USD" },
+            { date: "2024-10-17", name: "លោក ស្រ៊ាច្រេក អ្នកស្រី ស៊ាងហេង", item: "សសរកន្លោង១ដើម", phone: "", price: 2000, currency: "USD" },
+            { date: "2024-11-13", name: "ឧបាសិកា ឃឹម ហេន ឧបាសិកា ឃឹម ហ៊ាង", item: "សសរកន្លោង១ដើម", phone: "", price: 2000, currency: "USD" },
+            { date: "2024-11-24", name: "ឧបាសក រ៉ូវ ជិនឡេង ឧបាសិកា ឈុន សុខុម", item: "សសរកន្លោង១ដើម", phone: "", price: 2000, currency: "USD" },
+            { date: "2024-11-28", name: "លោក ហ៊ន់ កុយ អ្នកស្រី អ៊ឹង វួចហ៊ាង", item: "សសរកន្លោង១ដើម", phone: "", price: 2000, currency: "USD" },
+            { date: "2024-12-10", name: "ឧបាសក គី ប៉ូច ឧបាសិកា អ៊ុន វណ្ណា លោក ប៉ូច អូន អ្នកស្រី ទិត្យ រ៉ា", item: "សសររានហាល១ដើម", phone: "", price: 1500, currency: "USD" },
+            { date: "2024-11-13", name: "ឧបាសិកា យឹម ថេត ឧបាសក កាន់ គា ឧបាសិកា យឹម ធិ", item: "សសររានហាល១ដើម", phone: "", price: 1500, currency: "USD" },
+            { date: "2024-12-10", name: "ឧបាសក អ៊ឹង យុនប៊ួយ ឧបាសិកា ចេង ផេកជឹង ឧបាសក ឈួន ជា ឧបាសក កៅ សុខុន", item: "សសររានហាល១ដើម", phone: "", price: 1500, currency: "USD" },
+            { date: "2024-12-11", name: "ឧបាសក គឹម ឱម ឧបាសិកា ហ៊ឹង និម", item: "សសរកន្លោង១ដើម", phone: "", price: 2000, currency: "USD" },
+            { date: "2024-12-11", name: "អ្នកស្រី សាន សេងជុន លោក តែ លាងស្រ៊ុន អ្នកស្រី សាន សេងជាន", item: "សសរកន្លោង១ដើម", phone: "", price: 2000, currency: "USD" },
+            { date: "2024-11-13", name: "គ្រូ ឯម យិន យាយ មាលា", item: "ជណ្ដើរ", phone: "", price: 500, currency: "USD" },
+            { date: "2024-11-13", name: "ឧបាសិកា វ៉ន ភាន", item: "គ្រឹះ១ដើម", phone: "", price: 50, currency: "USD" },
+            { date: "2025-01-07", name: "ឧបាសក ផៃ ក្រុយ ឧបាសិកា ប៊ូលឹម", item: "គ្រឹះ២ដើម", phone: "", price: 100, currency: "USD" },
+            { date: "2025-10-18", name: "ឧបាសក សឹម ខន ឧបាសិកា ហួង គ្រើន", item: "សសររានហាលខាងកើត", phone: "", price: 6000000, currency: "KHR" },
+            { date: "2025-10-18", name: "ឧបាសក ផៃ សុខា ឧបាសិកា ស៊ុន ស្រីលាភ", item: "សសរជាងរៀងខាងកើត", phone: "", price: 2000, currency: "USD" }
+        ];
 
-        <div class="box">
-          <div class="guest-label" id="w_guest_label">សូមគោរពអញ្ជើញភ្ញៀវកិត្តិយស</div>
-          <div class="guest-name" id="guestName"></div>
-        </div>
+        let donations = JSON.parse(localStorage.getItem('donations')) || initialData;
+        if (!localStorage.getItem('donations')) localStorage.setItem('donations', JSON.stringify(donations));
 
-        <div class="big" id="w_big">សូមអញ្ជើញចូលរួមពិធីអាពាហ៍ពិពាហ៍</div>
-
-        
-        <div class="info">
-          <div><b>📅</b><span id="w_date_full">ថ្ងៃសៅរ៍ ទី១៧ ខែមករា ឆ្នាំ២០២៦</span></div>
-          <div><b>🕔</b><span id="w_time">វេលាម៉ោង ៥៖០០ ល្ងាច</span></div>
-          <div><b>📍</b><span id="w_location">ភូមិចន្លោង ឃុំដំរិល ស្រុកអូររាំងឪ ខេត្តត្បូងឃ្មុំ</span></div>
-                  </div>
-
-        <div class="desc" id="w_desc">យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញ ឯកឧត្តម លោកឧកញ៉ា អ្នកឧកញ៉ា ឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាង កញ្ញា អញ្ជើញចូលរួម ដើម្បីប្រសិទ្ធិពរជ័យសិរីសួស្តី ជ័យមង្គល ក្នុងពិធីអាពាហ៍ពិពាហ៍ របស់គូស្វាមីភរិយាថ្មី។</div>
-
-        <div class="contact">
-          <span id="w_call_label">📞 ហៅឥឡូវ</span> <span id="w_phone_display">+855 90 598 510</span>
-        </div>
-
-        <div class="btns">
-          <a class="btn" id="w_map_btn" href="https://goo.gl/maps/KcnLyL4jv2HMGDss9" target="_blank">📍 ទីតាំង (Map)</a>
-          <a class="btn" id="w_call_btn" href="tel:+85590598510">📞 ហៅឥឡូវ</a>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <script>
-    // Guest name from URL
-    (function(){
-      var params = new URLSearchParams(window.location.search);
-      var g = params.get("guest");
-      if(g){
-        try{ g = decodeURIComponent(g); }catch(e){}
-        document.getElementById("guestName").textContent = g;
-      }
-    })();
-
-    // Slideshow
-    (function(){
-      var slides = Array.from(document.querySelectorAll(".slide"));
-      var i = 0;
-      setInterval(function(){
-        slides[i].classList.remove("show");
-        i = (i + 1) % slides.length;
-        slides[i].classList.add("show");
-      }, 7000);
-    })();
-
-    // Sparkles
-    (function(){
-      var wrap = document.getElementById("spark");
-      for(let i=0;i<12;i++){
-        var s = document.createElement("i");
-        s.style.left = (5 + Math.random()*90) + "%";
-        s.style.top  = (10 + Math.random()*70) + "%";
-        s.style.animationDelay = (Math.random()*3) + "s";
-        s.style.animationDuration = (3 + Math.random()*2.5) + "s";
-        s.style.width = s.style.height = (4 + Math.random()*4) + "px";
-        wrap.appendChild(s);
-      }
-    })();
-  </script>
+        function renderTable(data) {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+            let totalUSD = 0, totalKHR = 0;
+            data.forEach((item, index) => {
+                const d = item.date.split('-');
+                const formattedDate = `${d[2]}.${d[1]}.${d[0]}`;
+                const symbol = item.currency === 'USD' ? '$' : '៛';
+                const p = parseFloat(item.price || 0);
+                if (item.currency === 'USD') totalUSD += p; else totalKHR += p;
+                tableBody.innerHTML += `<tr><td class="text-center">${formattedDate}</td><td>${item.name}</td><td>${item.item || '-'}</td><td class="text-center">${item.phone || '-'}</td><td class="text-center" style="font-weight:bold;">${p.toLocaleString()} ${symbol}</td><td class="no-print text-center"><button style="color:red; cursor:pointer; background:none; border:none;" onclick="deleteRow(${index})">✕</button></td></tr>`;
+            });
+            document.getElementById('totalUSD').innerText = totalUSD.toLocaleString() + " $";
+            document.getElementById('totalKHR').innerText = totalKHR.toLocaleString() + " ៛";
+        }
+        function addNewData() {
+            const date = document.getElementById('dateInput').value;
+            const name = document.getElementById('nameInput').value;
+            const item = document.getElementById('itemInput').value;
+            const phone = document.getElementById('phoneInput').value;
+            const price = document.getElementById('priceInput').value;
+            const currency = document.getElementById('currencyInput').value;
+            if (!name || !price) return alert("សូមបំពេញឈ្មោះ និងតម្លៃ!");
+            donations.push({ date, name, item, phone, price: parseFloat(price), currency });
+            localStorage.setItem('donations', JSON.stringify(donations));
+            renderTable(donations);
+            document.getElementById('nameInput').value = ''; document.getElementById('itemInput').value = ''; document.getElementById('phoneInput').value = ''; document.getElementById('priceInput').value = '';
+        }
+        function deleteRow(idx) { if(confirm("លុបទិន្នន័យនេះ?")) { donations.splice(idx, 1); localStorage.setItem('donations', JSON.stringify(donations)); renderTable(donations); } }
+        function exportToExcel() { const ws = XLSX.utils.json_to_sheet(donations); const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Donations"); XLSX.writeFile(wb, "បញ្ជីសប្បុរសជន.xlsx"); }
+        window.onload = function() { document.getElementById('dateInput').value = new Date().toISOString().split('T')[0]; renderTable(donations); };
+    </script>
 </body>
 </html>
